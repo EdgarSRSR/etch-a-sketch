@@ -10,9 +10,22 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-
     <h1>Etch-A-Sketch</h1>
-    <div class="container"></div>
+    <div id="container">
+        <div class="grid"></div>
+        <div class="controls">
+            <h2>Controls</h2>
+            <div class="grid-size">16 x 16</div>
+            <input type="range" min="2" max="100" value="8">
+            <button class="create">CREATE</button>
+            <button class="erase">ERASE</button>
+            <div class="select-colour">
+                <button class="black" >Black</button>
+                <button class="multicolour">Multi-colour</button>
+            </div>
+        </div>
+        
+    </div>
     
 </body>
 </html>
