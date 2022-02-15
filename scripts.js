@@ -8,6 +8,7 @@ const black = document.querySelector('.black');
 const multicolour = document.querySelector('.multicolour');  
 // let selectedColour = document.querySelector(''); 
 let selectedSize = 16;
+let selectedColour = 'black';
 
 
 
@@ -104,12 +105,46 @@ erase.addEventListener('click', function(){
 });
 
 black.addEventListener('click', function(){
+    selectedColour = 'black';
+    console.log(selectedColour);
     let cell = grid.children;
     for(let i = 0; i < selectedSize * selectedSize; i++){
         cell[i].addEventListener('mouseover', function(e){
-            e.target.style.backgroundColor = 'black';
+            e.target.style.backgroundColor = selectedColour;
         })
     }
+});
+
+function paintGrid(e, color){
+    if(e.buttons == 1){
+        if(e.target.matches('.box')){
+            e.target.style.backgroundColor = color;
+        }
+    } else{
+        return;
+    }
+}
+
+function getRandomColour(){
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    console.log('rgb(' + r + ', ' + g + ', ' + b + ')');
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+
+}
+
+multicolour.addEventListener('click', function(){
+    selectedColour = 'random';
+    console.log(selectedColour);
+    let cell = grid.children;
+    for(let i = 0; i < selectedSize * selectedSize; i++){
+        cell[i].addEventListener('mouseover', function(e){
+            //paintGrid(e, getRandomColour());
+            e.target.style.backgroundColor = getRandomColour();
+        })
+    }
+    
 });
 
 
