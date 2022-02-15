@@ -5,60 +5,15 @@ const grid = document.querySelector('.grid');
 const create = document.querySelector('.create');
 const erase = document.querySelector('.erase');
 const black = document.querySelector('.black');
-const multicolour = document.querySelector('.multicolour');  
-// let selectedColour = document.querySelector(''); 
+const multicolour = document.querySelector('.multicolour');
+const gridmarks = document.querySelector('.gridmarks'); 
 let selectedSize = 16;
 let selectedColour = 'black';
 
-
-
-
-// function createDiv(size){
-//     const content = document.createElement('div');
-//     content.classList.add('box');
-//     content.style.width = `${size}px`;
-//     content.style.height = `${size}px`;
-//     return content;
-// }
-
-// createGrid = () => {
-//     for(let i = 0; i < 256 ; i++){
-//         const content = document.createElement('div');
-//         content.classList.add('box');
-//         content.addEventListener('mousedown', function(e){
-//             e.target.style.backgroundColor = 'black';
-//         } )
-//         grid.appendChild(content);
-
+// grid.addEventListener('mousedown', function(e){
+//     if(e.target.matches('.box')){
+//         e.target.classList.add('activated')
 //     }
-// };
-
-
-
-
-// function createGrid(selectedSize){
-//     for(let i = 0;i< selectedSize;i++){
-//         for(let j = 0;j< selectedSize;j++){
-//             grid.appendChild(createDiv(grid.clientWidth/ selectedSize));
-//         }
-//     }
-//}
-
-// function eraseGrid(){
-//     grid.innerHTML = '';
-//     createGrid(selectedSize);
-// }
-
-grid.addEventListener('mousedown', function(e){
-    if(e.target.matches('.box')){
-        e.target.classList.add('activated')
-    }
-});
-
-// gridValue.addEventListener('input', function(e){
-//     selectedSize = e.target.value;
-//     console.log(selectedSize);
-//     gridSize.textContent = `${selectedSize} X ${selectedSize}`;
 // });
 
 function removeAllChildNodes(parent){
@@ -79,15 +34,18 @@ function createGrid (selectedSize) {
     for(let i = 0; i < selectedSize * selectedSize;i++){
         const content = document.createElement('div');
         content.classList.add('box');
-        content.addEventListener('mousedown', function(e){
-            e.target.style.backgroundColor = 'black';
-        } )
+         content.addEventListener('mousedown', function(e){
+              if(selectedColour == 'random'){
+                e.target.style.backgroundColor = getRandomColour();
+              } else {
+                e.target.style.backgroundColor = 'black'
+              }
+         } )
         grid.appendChild(content);
     }
 };
 
 function eraseGrid(){
-        //removeAllChildNodes(grid);
         grid.innerHTML = '';
         createGrid(selectedSize);
 }
@@ -96,10 +54,6 @@ create.addEventListener('click', function(){
     eraseGrid();
 });
 
-// create.addEventListener('click', function(){
-//     eraseGrid();
-// });
-
 erase.addEventListener('click', function(){
     eraseGrid();
 });
@@ -107,12 +61,6 @@ erase.addEventListener('click', function(){
 black.addEventListener('click', function(){
     selectedColour = 'black';
     console.log(selectedColour);
-    let cell = grid.children;
-    for(let i = 0; i < selectedSize * selectedSize; i++){
-        cell[i].addEventListener('mouseover', function(e){
-            e.target.style.backgroundColor = selectedColour;
-        })
-    }
 });
 
 function paintGrid(e, color){
@@ -126,9 +74,9 @@ function paintGrid(e, color){
 }
 
 function getRandomColour(){
-    var r = Math.floor(Math.random() * 255);
-    var g = Math.floor(Math.random() * 255);
-    var b = Math.floor(Math.random() * 255);
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
     console.log('rgb(' + r + ', ' + g + ', ' + b + ')');
     return 'rgb(' + r + ', ' + g + ', ' + b + ')';
 
@@ -137,15 +85,43 @@ function getRandomColour(){
 multicolour.addEventListener('click', function(){
     selectedColour = 'random';
     console.log(selectedColour);
-    let cell = grid.children;
-    for(let i = 0; i < selectedSize * selectedSize; i++){
-        cell[i].addEventListener('mouseover', function(e){
-            //paintGrid(e, getRandomColour());
-            e.target.style.backgroundColor = getRandomColour();
-        })
-    }
-    
 });
+
+// grid.addEventListener('mousedown', event => {
+//     paintGridEvent = paintGrid(event, selectedColour);
+//     if(event.buttons == 1){
+//         window.addEventListener('mouseover', (e)=>{
+//             if(selectedColour == 'random'){
+//                 paintGrid(e, getRandomColour());
+//             } else{
+//                 paintGrid(e, selectedColour);
+//             }
+//         });
+//     }
+// });
+
+
+grid.addEventListener('mousedown', event => {
+    if(event.buttons == 1){
+        let cell = grid.children;
+        for(let i = 0; i < selectedSize * selectedSize; i++){
+         cell[i].addEventListener('mouseover', function(e){
+             if(selectedColour == 'random'){
+                paintGrid(e, getRandomColour());
+             } else {
+                paintGrid(e, selectedColour);
+             }
+         })
+     }
+    }
+});
+
+ gridmarks.addEventListener('click', function(){
+     let cell = grid.children;
+     for(let i = 0; i < selectedSize * selectedSize; i++){
+        cell[i].className = (cell[i].className == "box") ?  "boxgrid" : "box";
+        }
+ });
 
 
 createGrid(selectedSize);

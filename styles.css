@@ -58,6 +58,7 @@ h2{
 button{
     width: 80px;
     box-shadow: 5px 5px black;
+   
 }
 
 .grid-size{
@@ -86,6 +87,21 @@ button{
 }
 
 .erase{
+    display: block;
+    margin: 0 auto;
+    padding: 2 rem;
+    background-color: red;
+    color: white;
+    font-family: 'Vampiro One', cursive;
+    font-weight: 500;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.gridmarks{
     display: block;
     margin: 0 auto;
     padding: 2 rem;
@@ -130,14 +146,6 @@ button{
 }
 
 .grid{
-    /* border: 2px solid rgb(0, 0, 0);
-    width: 70rem;
-    height: 70rem;
-    position: relative;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around; */
-
     
     margin-top: 3.125rem;
     display: inline-grid;
@@ -157,8 +165,16 @@ button{
 
 .box{
     background-color: white;
-    border: 1px solid rgb(0, 0, 0);
+   
 }
+
+.boxgrid{
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0);
+
+}
+
+
 
 .box.activated{
     background-color: black;
