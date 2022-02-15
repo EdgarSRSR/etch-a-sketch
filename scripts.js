@@ -32,6 +32,12 @@ function eraseGrid(){
     createGrid(selectedSize);
 }
 
+grid.addEventListener('mousedown', function(e){
+    if(e.target.matches('.box')){
+        e.target.classList.add('activated')
+    }
+});
+
 gridValue.addEventListener('input', function(e){
     selectedSize = e.target.value;
     console.log(selectedSize);
@@ -39,6 +45,10 @@ gridValue.addEventListener('input', function(e){
 });
 
 create.addEventListener('click', function(){
+    eraseGrid();
+});
+
+erase.addEventListener('click', function(){
     eraseGrid();
 });
 
