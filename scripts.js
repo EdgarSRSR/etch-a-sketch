@@ -6,7 +6,8 @@ const create = document.querySelector('.create');
 const erase = document.querySelector('.erase');
 const black = document.querySelector('.black');
 const multicolour = document.querySelector('.multicolour');
-const gridmarks = document.querySelector('.gridmarks'); 
+const gridmarks = document.querySelector('.gridmarks');
+const chooseColor = document.querySelector('#colorpalette'); 
 let selectedSize = 16;
 let selectedColour = 'black';
 
@@ -38,7 +39,7 @@ function createGrid (selectedSize) {
               if(selectedColour == 'random'){
                 e.target.style.backgroundColor = getRandomColour();
               } else {
-                e.target.style.backgroundColor = 'black'
+                e.target.style.backgroundColor = selectedColour;
               }
          } )
         grid.appendChild(content);
@@ -87,6 +88,18 @@ multicolour.addEventListener('click', function(){
     console.log(selectedColour);
 });
 
+// chooseColor.addEventListener('input', function(){
+//     selectedColour = document.getElementById('color').value;
+//     console.log(selectedColour);
+// });
+
+chooseColor.addEventListener("change", watchColorPicker, false);
+function watchColorPicker(event) {
+  selectedColour = event.target.value;
+  console.log(selectedColour);
+ 
+}
+
 // grid.addEventListener('mousedown', event => {
 //     paintGridEvent = paintGrid(event, selectedColour);
 //     if(event.buttons == 1){
@@ -122,6 +135,7 @@ grid.addEventListener('mousedown', event => {
         cell[i].className = (cell[i].className == "box") ?  "boxgrid" : "box";
         }
  });
+
 
 
 createGrid(selectedSize);
