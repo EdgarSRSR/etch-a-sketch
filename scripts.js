@@ -88,11 +88,6 @@ multicolour.addEventListener('click', function(){
     console.log(selectedColour);
 });
 
-// chooseColor.addEventListener('input', function(){
-//     selectedColour = document.getElementById('color').value;
-//     console.log(selectedColour);
-// });
-
 chooseColor.addEventListener("change", watchColorPicker, false);
 function watchColorPicker(event) {
   selectedColour = event.target.value;

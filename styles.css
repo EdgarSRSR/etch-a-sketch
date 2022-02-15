@@ -27,7 +27,7 @@ h2{
     margin-bottom: 3rem;
     font-size: 5rem;
     color:red;
-    text-shadow: 5px 5px black;
+    text-shadow: 5px 5px yellow;
 }
 
 #container{
@@ -83,7 +83,9 @@ button{
 .select-colour{
     margin: 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .erase{
@@ -113,6 +115,7 @@ button{
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    margin-bottom: 2rem;
 }
 
 .black{
@@ -128,6 +131,7 @@ button{
     border-radius: 0.5rem;
     cursor: pointer;
     box-shadow: 5px 5px red;
+    margin-bottom: 2rem;
 }
 
 .multicolour{
@@ -142,7 +146,24 @@ button{
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    width: 150px;
+    margin-bottom: 2rem;
 
+}
+
+.choosecolor{
+    display: block;
+    background: red;
+    box-shadow: 5px 5px black;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
 }
 
 .grid{
@@ -162,7 +183,6 @@ button{
 }
 
 
-
 .box{
     background-color: white;
    
@@ -171,13 +191,6 @@ button{
 .boxgrid{
     background-color: white;
     border: 1px solid rgb(0, 0, 0);
-
-}
-
-
-
-.box.activated{
-    background-color: black;
 
 }
 
@@ -196,3 +209,5 @@ a{
 a:hover{
     text-decoration: underline;
 }
+
+
