@@ -1,17 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 
 body{
     font-family: 'Vampiro One', cursive;
     color: #000;
     background-color: chartreuse;
     font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1{
@@ -19,6 +17,8 @@ h1{
     margin-top: 3.5rem;
     margin-bottom: 1.5rem;
     font-size: 4rem;
+    color:red;
+    text-shadow: 5px 5px yellow;
 
 }
 
@@ -27,17 +27,21 @@ h2{
     margin-bottom: 3rem;
     font-size: 5rem;
     color:red;
+    text-shadow: 5px 5px black;
 }
 
 #container{
-    padding: 0 2vw;
     display: flex;
     align-items: center;
 }
 
 .controls{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin-left: 10rem;
+
 }
 
 .inner{
@@ -48,6 +52,12 @@ h2{
     border-top-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    box-shadow: 5px 5px;
+}
+
+button{
+    width: 80px;
+    box-shadow: 5px 5px black;
 }
 
 .grid-size{
@@ -93,14 +103,15 @@ h2{
     display: block;
     margin: 0 auto;
     padding: 2 rem;
-    background-color: transparent;
-    color: black;
+    background-color: black;
+    color: white;
     font-family: 'Vampiro One', cursive;
     font-weight: 500;
     font-size: 1rem;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    box-shadow: 5px 5px red;
 }
 
 .multicolour{
@@ -108,8 +119,6 @@ h2{
     margin: 0 auto;
     padding: 2 rem;
     background: linear-gradient(to right,#21c2f3,#f436e4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     color: white;
     font-family: 'Vampiro One', cursive;
     font-weight: 500;
@@ -121,22 +130,53 @@ h2{
 }
 
 .grid{
-    border: 2px solid rgb(0, 0, 0);
+    /* border: 2px solid rgb(0, 0, 0);
     width: 70rem;
     height: 70rem;
     position: relative;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-around; */
+
+    
+    margin-top: 3.125rem;
+    display: inline-grid;
+    grid-template-columns: repeat(16, 2fr);
+    grid-template-rows: repeat(16, 2fr);
+    border: 5px solid white;
+    border-radius: 5px;
+    height: 575px;
+    width: 575px;
+    background-color: #FAEBD7;
+    box-shadow: 10px 10px;
+
+    cursor: crosshair;
 }
 
 
 
 .box{
-    border: 0.5px solid rgb(0, 0, 0);
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .box.activated{
     background-color: black;
 
+}
+
+footer{
+    font-size: 200;
+    bottom: 0;
+    justify-content: center;
+    padding-top: 10rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: underline;
 }
