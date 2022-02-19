@@ -1,5 +1,5 @@
 # etch-a-sketch
-![etchasketch](/assets/etchsketch.png)<br />
+![etchasketch](/assets/etchasketch.png)<br />
 ## Features
 An etch-a-sketch that allows you to draw.<br />
 You decide the size of the drawing space up to 100 x 100 grid.<br />
